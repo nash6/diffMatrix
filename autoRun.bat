@@ -1,0 +1,1 @@
+python diffMatrix.py data.txt
