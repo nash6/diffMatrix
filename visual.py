@@ -29,23 +29,38 @@ def main(argv):
 	#tlist = tlist[1:-1]
 
 	
-	f = open("Newoutput.txt",'w')
+	
 
+
+	result = []
+	result.append(['No.', 'Sum', 'Result'])
 	for i, line in enumerate(vector):
 		tmp = []
-
+		tmp.append(i + 1)
 		for j, cube in enumerate(line):
-
 			if j == 0:
-				f.write("%s\t" % cube)
+				tmp.append(cube)
+				#f.write("%s\t" % cube)
 			else:
 				if cube != '0':
-					f.write("%s " % tlist[j])
-		f.write("\n")
-		
+					tmp.append(tlist[j])
+					#f.write("%s " % tlist[j])
+		result.append(tmp)
+		#f.write("\n")
+	#print result
 
+	f = open("Newoutput.txt",'w')
 	
-	
+	for head in result[0]:
+		f.write("%s\t" % head)
+	print >> f 
+	for each in result[1:]:
+		for index, item in enumerate(each):
+			if index in (0, 1):
+				f.write("%s\t" % item)
+			else:
+				f.write("%s " % item)
+		f.write("\n")
 	f.close()
 
 if __name__ == '__main__':

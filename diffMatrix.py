@@ -222,6 +222,44 @@ def newGen(diffMatrix):
 
 	return result
 
+def visual(v, r):
+	tlist = v[0]
+
+	result = []
+	result.append(['No.', 'Sum', 'Result'])
+	for i, line in enumerate(r):
+		tmp = []
+		tmp.append(i + 1)
+		for j, cube in enumerate(line):
+			if j == 0:
+				tmp.append(cube)
+				#f.write("%s\t" % cube)
+			else:
+				if cube != 0:
+					tmp.append(tlist[j])
+					#f.write("%s " % tlist[j])
+		result.append(tmp)
+		#f.write("\n")
+	#print result
+	return result
+
+	
+
+def print2file(result, path):
+	f = open(path,'w')
+	
+	for head in result[0]:
+		f.write("%s\t" % head)
+	print >> f 
+	for each in result[1:]:
+		for index, item in enumerate(each):
+			if index in (0, 1):
+				f.write("%s\t" % item)
+			else:
+				f.write("%s " % item)
+		f.write("\n")
+	f.close()
+
 def main(argv):
 	arg = argv[1]
 	#arg = 'data.txt'
@@ -266,17 +304,22 @@ def main(argv):
 	multi = newGen(multi)
 
 	multi = newSimply(multi)
-
+	print multi
+	multi = visual(vector, multi)
+	print multi
+	print2file(multi, 'output.txt')
 	print '============='
-	print 'Final Result:'
+	print 'Done'
 	
-	
+	'''
 	file = open("output.txt",'w')
 	for each in multi:
 		file.write("%s\n" % each)
 	
 	file.close()
-	
+	'''
+
+
 	
 if __name__ == '__main__':
     main(sys.argv)

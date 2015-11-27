@@ -1,0 +1,5 @@
+No.	Sum	Result	
+1	2	c1 c3 
+2	2	c1 c4 
+3	2	c2 c3 
+4	2	c2 c4 
